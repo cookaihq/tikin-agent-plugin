@@ -17,26 +17,30 @@ tikin has 1,000+ endpoints. This skill finds the one you need, then hands off to
 
 ## Use the bundled search CLI
 
-`bin/tikin-find-endpoint` (on PATH when the plugin is enabled) searches a trimmed index of
-every endpoint (method, path, tag, summary, params):
+`scripts/tikin-find-endpoint` — bundled **inside this skill's directory** — searches a trimmed
+index of every endpoint (method, path, tag, summary, params). Run it by path relative to this
+skill's directory (it works from any cwd; no PATH setup needed):
 
 ```bash
 # goal-based search, scoped to a platform
-tikin-find-endpoint "one video" --platform tiktok
-tikin-find-endpoint "user posts" --platform douyin
-tikin-find-endpoint "comments" --platform youtube --method GET
+<this-skill-dir>/scripts/tikin-find-endpoint "one video" --platform tiktok
+<this-skill-dir>/scripts/tikin-find-endpoint "user posts" --platform douyin
+<this-skill-dir>/scripts/tikin-find-endpoint "comments" --platform youtube --method GET
 
 # no platform filter — search everything
-tikin-find-endpoint "trending hashtag"
+<this-skill-dir>/scripts/tikin-find-endpoint "trending hashtag"
 ```
+
+(`<this-skill-dir>` = the directory containing this SKILL.md. Other skills refer to this tool
+as `tikin-find-endpoint` for short — it always means this script.)
 
 Output lines look like:
 ```
 GET  /api/v1/tiktok/app/v3/fetch_one_video  [TikTok-App-V3-API]  params: aweme_id
 ```
 
-The index lives at `references/endpoint-index.json`, ships with the plugin, and is refreshed
-on new plugin releases when the API surface changes.
+The index lives at `references/endpoint-index.json` (beside the script, inside this skill),
+ships with the skill, and is refreshed on new releases when the API surface changes.
 
 ## Map a result to a call
 

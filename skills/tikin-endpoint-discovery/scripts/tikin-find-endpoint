@@ -12,9 +12,10 @@ import json
 import os
 import sys
 
+# The script lives in <skill>/scripts/; the index ships beside it in <skill>/references/.
 INDEX = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-    "skills", "tikin-endpoint-discovery", "references", "endpoint-index.json",
+    "references", "endpoint-index.json",
 )
 
 

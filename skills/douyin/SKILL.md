@@ -5,7 +5,8 @@ description: Work with Douyin (抖音) data via tikin — fetch videos, user pro
 
 # Douyin / 抖音 (via tikin)
 
-Deep coverage of Douyin. Exhaustive endpoints: `tikin-find-endpoint "<goal>" --platform douyin`.
+Deep coverage of Douyin. Exhaustive endpoints via the `tikin-endpoint-discovery` skill:
+`tikin-find-endpoint "<goal>" --platform douyin`.
 
 ## Setup gate
 

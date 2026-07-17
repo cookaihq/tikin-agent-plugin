@@ -1,6 +1,6 @@
 ---
 name: tikin-onboarding
-description: Entry point for using tikin social-media data in Claude. Use when the user first mentions tikin, asks to download/fetch TikTok/Douyin/Instagram/YouTube/Twitter/Xiaohongshu data, or hasn't set up access yet. Walks through getting an API key, setting TIKIN_API_KEY, and routes to the right skill.
+description: Entry point for using tikin social-media data in an AI agent. Use when the user first mentions tikin, asks to download/fetch TikTok/Douyin/Instagram/YouTube/Twitter/Xiaohongshu data, or hasn't set up access yet. Walks through getting an API key, setting TIKIN_API_KEY, and routes to the right skill.
 ---
 
 # tikin — Onboarding & Routing

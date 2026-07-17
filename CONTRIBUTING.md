@@ -1,16 +1,17 @@
 # Contributing to the tikin Plugin
 
-Thanks for helping improve the tikin plugin for Claude Code! This plugin is a thin connector over
+Thanks for helping improve the tikin agent plugin! This plugin is a thin connector over
 [tikin](https://tikin.net)'s REST API — most contributions are new/updated **skills** (Markdown)
-and small helper scripts.
+and small helper scripts. Skills follow the [Agent Skills](https://agentskills.io) open standard
+and work in Claude Code, Codex, and other skills-compatible agents.
 
 ## Project layout
 
 ```
-.claude-plugin/         plugin.json + marketplace.json (manifests — required)
-skills/<name>/SKILL.md   one folder per skill
-bin/tikin-find-endpoint  endpoint search CLI
+skills/<name>/SKILL.md   one folder per skill (the cross-agent source of truth)
+skills/tikin-endpoint-discovery/scripts/tikin-find-endpoint     endpoint search CLI
 skills/tikin-endpoint-discovery/references/endpoint-index.json  bundled index
+.claude-plugin/          plugin.json + marketplace.json (Claude Code manifests)
 ```
 
 ## Quick start for contributors
@@ -27,7 +28,8 @@ claude --plugin-dir .                    # load the plugin locally to test
   (`name`, `description`). Keep skills short and action-oriented.
 - Every skill assumes a single REST base (`$BASE`, default `https://console.tikin.net`) and a
   `TIKIN_API_KEY` bearer token. Do not hardcode keys.
-- Reference endpoints by their exact path/method/params — find them with `tikin-find-endpoint`.
+- Reference endpoints by their exact path/method/params — find them with the
+  `tikin-endpoint-discovery` skill's `scripts/tikin-find-endpoint`.
 
 ## Endpoint index
 

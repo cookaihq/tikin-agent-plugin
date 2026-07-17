@@ -24,7 +24,8 @@ BASE="${TIKIN_BASE_URL:-https://console.tikin.net}"
 | Twitter/X | Trending topics | `GET /api/v1/twitter/web/fetch_trending` (`country`) |
 
 For niche trends, also run keyword/hashtag search on the relevant platform skill. For other
-platforms' trend sources, use `tikin-find-endpoint "<goal>" --platform <slug>`.
+platforms' trend sources, use the `tikin-endpoint-discovery` skill
+(`tikin-find-endpoint "<goal>" --platform <slug>`).
 
 ## Workflow
 

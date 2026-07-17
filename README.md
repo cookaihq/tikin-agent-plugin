@@ -1,11 +1,12 @@
-# tikin Plugin for Claude Code
+# tikin Plugin
 
-Social-media data for Claude — download media and fetch posts, profiles, comments, search,
-trends, and analytics across **TikTok, Douyin, Instagram, YouTube, Twitter/X, Threads,
+Social-media data for AI coding agents — download media and fetch posts, profiles, comments,
+search, trends, and analytics across **TikTok, Douyin, Instagram, YouTube, Twitter/X, Threads,
 Xiaohongshu**, and more, powered by [tikin](https://tikin.net).
 
-17 skills across three layers: integration (REST), per-platform coverage, and ready-made task
-workflows.
+Built on the [Agent Skills](https://agentskills.io) open standard — works in **Claude Code**,
+**Codex**, and any skills-compatible agent. 17 skills across three layers: integration (REST),
+per-platform coverage, and ready-made task workflows.
 
 ## Quick start
 
@@ -14,11 +15,53 @@ workflows.
    ```bash
    export TIKIN_API_KEY="your_api_key_here"
    ```
-3. **Install** from the marketplace, or test locally:
-   ```bash
-   claude --plugin-dir /path/to/tikin-plugin
-   ```
-4. Ask Claude something like *"Download this TikTok video"* or *"Analyze @nasa on Instagram"*.
+3. **Install** the skills for your agent — see [Install](#install) below.
+4. Ask your agent something like *"Download this TikTok video"* or *"Analyze @nasa on Instagram"*.
+
+## Install
+
+The skills are self-contained [Agent Skills](https://agentskills.io) folders (the endpoint-search
+tool ships inside the `tikin-endpoint-discovery` skill), so any compatible agent can use them.
+Runtime requirements are just `curl` (REST calls) and `python3` (the bundled endpoint-search
+script) — no SDK, package install, or build step.
+
+### Any agent — skills CLI
+
+[`npx skills`](https://github.com/vercel-labs/skills) installs into every agent it detects
+(Claude Code, Codex, Cursor, and more):
+
+```bash
+npx skills add cookaihq/tikin-agent-plugin
+```
+
+### Claude Code — plugin marketplace
+
+```bash
+claude plugin marketplace add cookaihq/tikin-agent-plugin
+claude plugin install tikin-plugin@tikin-plugins
+```
+
+Or test a local checkout: `claude --plugin-dir /path/to/tikin-plugin`.
+
+### Codex — manual copy
+
+Codex reads skills from `.agents/skills/` (project-level) or `~/.agents/skills/` (personal):
+
+```bash
+git clone https://github.com/cookaihq/tikin-agent-plugin.git
+mkdir -p ~/.agents/skills
+cp -R tikin-agent-plugin/skills/* ~/.agents/skills/
+```
+
+### Verify & update
+
+- **skills CLI installs:** check with `npx skills list`, update with `npx skills update`.
+- **Claude Code marketplace installs:** manage via the `/plugin` interface inside Claude Code.
+- **Manual copies:** `git pull` in your clone, then re-copy `skills/*`.
+
+Sanity check in any agent: ask *"Find the tikin endpoint for one TikTok video"* — the
+`tikin-endpoint-discovery` skill should search the bundled index and return
+`GET /api/v1/tiktok/app/v3/fetch_one_video`.
 
 ## How it connects
 
@@ -86,7 +129,9 @@ You: What's trending on TikTok in the US right now?
 
 ## Links
 
-- Website <https://tikin.net> · Console <https://console.tikin.net>
+- Website <https://tikin.net> · Console <https://console.tikin.net> ·
+  GitHub <https://github.com/cookaihq/tikin-agent-plugin>
+- [Changelog](CHANGELOG.md) · [Contributing](CONTRIBUTING.md)
 
 ## License
 

@@ -34,7 +34,8 @@ BASE="${TIKIN_BASE_URL:-https://console.tikin.net}"
 
 ## Endpoint pointers (per platform)
 
-Use `tikin-find-endpoint "user info" --platform <slug>` and `"user posts" --platform <slug>`, or
+Use the `tikin-endpoint-discovery` skill (`tikin-find-endpoint "user info" --platform <slug>`
+and `"user posts" --platform <slug>`), or
 the platform skill: `tiktok`, `douyin`, `instagram`, `youtube`, `twitter-threads`, `xiaohongshu`.
 
 ## Cost awareness

@@ -5,7 +5,7 @@ description: Work with Xiaohongshu / RedNote (小红书) data via tikin — fetc
 
 # Xiaohongshu / RedNote / 小红书 (via tikin)
 
-Coverage via the App-V2 API. Exhaustive endpoints:
+Coverage via the App-V2 API. Exhaustive endpoints via the `tikin-endpoint-discovery` skill:
 `tikin-find-endpoint "<goal>" --platform xiaohongshu`.
 
 ## Setup gate

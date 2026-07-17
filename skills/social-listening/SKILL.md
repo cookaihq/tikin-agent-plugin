@@ -22,7 +22,7 @@ BASE="${TIKIN_BASE_URL:-https://console.tikin.net}"
    - TikTok `app/v3/fetch_video_search_result`, Douyin `search/fetch_general_search_v2` (POST body),
      Instagram `v2/general_search`, Twitter `web/fetch_search_timeline`, YouTube
      `web_v2/get_general_search`, Xiaohongshu `app_v2/search_notes`.
-   - Find exact paths via `tikin-find-endpoint "search" --platform <slug>`.
+   - Find exact paths via the `tikin-endpoint-discovery` skill (`tikin-find-endpoint "search" --platform <slug>`).
 3. **Collect** posts/comments into one list (author, text, platform, url, timestamp, engagement).
 4. **Classify sentiment** (positive / neutral / negative) per mention — reason over the text.
 5. **Cluster themes** (recurring topics, complaints, praise) and pull representative quotes.

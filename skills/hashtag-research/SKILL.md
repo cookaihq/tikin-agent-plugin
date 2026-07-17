@@ -23,7 +23,7 @@ BASE="${TIKIN_BASE_URL:-https://console.tikin.net}"
    - Douyin: `search/fetch_general_search_v2` (POST) for hashtag/keyword content.
    - Instagram: `v2/search_hashtags` + `v2/fetch_hashtag_posts`.
    - Xiaohongshu: `app_v2/search_notes` (keyword).
-   - Discover exact paths: `tikin-find-endpoint "hashtag" --platform <slug>`.
+   - Discover exact paths via the `tikin-endpoint-discovery` skill (`tikin-find-endpoint "hashtag" --platform <slug>`).
 3. **Summarize**: estimated popularity/volume, top posts (engagement), recent momentum, and a list
    of related/co-occurring hashtags pulled from the top posts.
 4. **Recommend** a tag set for the user's niche.

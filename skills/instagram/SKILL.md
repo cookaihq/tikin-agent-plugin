@@ -5,8 +5,8 @@ description: Work with Instagram data via tikin — fetch user info and posts, s
 
 # Instagram (via tikin)
 
-Deep coverage of Instagram via the V2 API. Exhaustive endpoints:
-`tikin-find-endpoint "<goal>" --platform instagram`.
+Deep coverage of Instagram via the V2 API. Exhaustive endpoints via the
+`tikin-endpoint-discovery` skill: `tikin-find-endpoint "<goal>" --platform instagram`.
 
 ## Setup gate
 

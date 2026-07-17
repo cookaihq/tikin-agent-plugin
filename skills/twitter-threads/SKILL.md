@@ -5,8 +5,9 @@ description: Work with Twitter/X and Threads data via tikin — fetch tweet/post
 
 # Twitter / X & Threads (via tikin)
 
-Coverage of Twitter/X and Threads (both microblog platforms). Exhaustive endpoints:
-`tikin-find-endpoint "<goal>" --platform twitter` or `--platform threads`.
+Coverage of Twitter/X and Threads (both microblog platforms). Exhaustive endpoints via the
+`tikin-endpoint-discovery` skill: `tikin-find-endpoint "<goal>" --platform twitter` or
+`--platform threads`.
 
 ## Setup gate
 

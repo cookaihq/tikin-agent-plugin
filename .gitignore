@@ -13,7 +13,8 @@ secrets.*
 Thumbs.db
 
 # --- Maintainer-only build/validation tooling (not shipped in the public repo) ---
-scripts/
+# Root scripts/ only — skills bundle their own scripts/ (e.g. skills/*/scripts/), which DO ship.
+/scripts/
 
 # --- Python ---
 __pycache__/

@@ -5,8 +5,8 @@ description: Work with YouTube data via tikin — fetch video info, downloadable
 
 # YouTube (via tikin)
 
-Deep coverage of YouTube via the Web-V2 API. Exhaustive endpoints:
-`tikin-find-endpoint "<goal>" --platform youtube`.
+Deep coverage of YouTube via the Web-V2 API. Exhaustive endpoints via the
+`tikin-endpoint-discovery` skill: `tikin-find-endpoint "<goal>" --platform youtube`.
 
 ## Setup gate
 

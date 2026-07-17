@@ -46,8 +46,8 @@ curl -s -X POST "$BASE/api/v1/tiktok/app/v3/fetch_multi_video" \
   -d '["7372484719365098283","7372484719365098284"]'
 ```
 
-Paths, methods, and parameters are exactly as returned by `tikin-find-endpoint` — pass them
-through unchanged.
+Paths, methods, and parameters are exactly as returned by `tikin-find-endpoint` (the
+`tikin-endpoint-discovery` skill's bundled search CLI) — pass them through unchanged.
 
 ## Pagination (param name varies by platform)
 
