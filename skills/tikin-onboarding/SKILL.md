@@ -16,9 +16,13 @@ Read this once, get the user set up, then **hand off to the skill that owns the 
 Send the user to <https://console.tikin.net>: register, open the API Keys page, and create a
 key. Billing is per-call against a prepaid balance.
 
-## Step 2 — Set the key in the environment
+## Step 2 — Provide the key (env var, or a config file)
 
-Every call reads `TIKIN_API_KEY` from the environment:
+Every skill resolves `TIKIN_API_KEY` the same way: **the environment variable always wins;
+if it is unset, the skill falls back to a dotenv file at `~/.config/tikin/env`.** Pick whichever
+fits — the env var for a quick one-off, the file to persist it once for every skill.
+
+**Option A — environment variable:**
 
 ```bash
 export TIKIN_API_KEY="your_api_key_here"
@@ -26,6 +30,21 @@ export TIKIN_API_KEY="your_api_key_here"
 # optional — override the base URL for a private deployment:
 # export TIKIN_BASE_URL="https://console.tikin.net"
 ```
+
+**Option B — config file** (`~/.config/tikin/env`, standard `KEY=value` dotenv):
+
+```bash
+mkdir -p ~/.config/tikin
+cat > ~/.config/tikin/env <<'EOF'
+TIKIN_API_KEY=your_api_key_here
+# optional — override the base URL for a private deployment:
+# TIKIN_BASE_URL=https://console.tikin.net
+EOF
+chmod 600 ~/.config/tikin/env
+```
+
+Honors `XDG_CONFIG_HOME` (defaults to `~/.config`). The file is sourced only when
+`TIKIN_API_KEY` is not already exported, so an env var set in the current shell overrides it.
 
 ## Step 3 — Pick the path and hand off
 
@@ -41,12 +60,15 @@ tikin is a single REST API. Point the task at the right skill:
 ## Setup gate (run before any tikin call)
 
 ```bash
+# Resolve the key: env var wins; else load the ~/.config/tikin/env dotenv fallback.
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/tikin/env"
+if [ -z "${TIKIN_API_KEY:-}" ] && [ -f "$CONFIG" ]; then set -a; . "$CONFIG"; set +a; fi
 if [ -z "${TIKIN_API_KEY:-}" ]; then
-  echo "TIKIN_API_KEY is not set — get a key at https://console.tikin.net then: export TIKIN_API_KEY=..."
+  echo "TIKIN_API_KEY is not set — get a key at https://console.tikin.net then either export it or write ~/.config/tikin/env (see Step 2)."
 fi
 ```
 
-If unset, halt and walk the user through Steps 1–2 before proceeding.
+If still unset after the fallback, halt and walk the user through Steps 1–2 before proceeding.
 
 ## Red flags
 

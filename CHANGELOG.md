@@ -2,6 +2,13 @@
 
 All notable changes to the tikin plugin are documented here.
 
+## Unreleased
+
+- **Config-file fallback for the API key:** every skill's setup gate now resolves
+  `TIKIN_API_KEY` from the environment first, and if it's unset, sources a dotenv file at
+  `~/.config/tikin/env` (honors `XDG_CONFIG_HOME`; can also carry `TIKIN_BASE_URL`). The env
+  var still takes precedence, so nothing changes for existing users.
+
 ## 0.1.0
 
 Initial release.

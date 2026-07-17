@@ -11,10 +11,14 @@ per-platform coverage, and ready-made task workflows.
 ## Quick start
 
 1. **Get an API key** at <https://console.tikin.net>: register, open the API Keys page, create a key.
-2. **Export it:**
+2. **Provide it** — either export the env var, or drop it in a config file (env var wins):
    ```bash
    export TIKIN_API_KEY="your_api_key_here"
+   # or persist it once for every skill:
+   #   mkdir -p ~/.config/tikin && echo 'TIKIN_API_KEY=your_api_key_here' > ~/.config/tikin/env
    ```
+   Skills read `TIKIN_API_KEY` from the environment; if it's unset they fall back to the
+   `~/.config/tikin/env` dotenv file (honors `XDG_CONFIG_HOME`).
 3. **Install** the skills for your agent — see [Install](#install) below.
 4. Ask your agent something like *"Download this TikTok video"* or *"Analyze @nasa on Instagram"*.
 

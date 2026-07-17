@@ -28,6 +28,9 @@ claude --plugin-dir .                    # load the plugin locally to test
   (`name`, `description`). Keep skills short and action-oriented.
 - Every skill assumes a single REST base (`$BASE`, default `https://console.tikin.net`) and a
   `TIKIN_API_KEY` bearer token. Do not hardcode keys.
+- A skill's setup gate resolves the key uniformly: env var wins, else it sources the
+  `~/.config/tikin/env` dotenv fallback (`${XDG_CONFIG_HOME:-$HOME/.config}/tikin/env`). Reuse
+  that exact snippet — keep it byte-identical across skills so it stays greppable.
 - Reference endpoints by their exact path/method/params — find them with the
   `tikin-endpoint-discovery` skill's `scripts/tikin-find-endpoint`.
 

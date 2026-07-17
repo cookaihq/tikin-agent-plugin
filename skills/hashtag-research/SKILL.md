@@ -10,6 +10,8 @@ Assess a hashtag/keyword and surface its top content and related tags.
 ## Setup gate
 
 ```bash
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/tikin/env"
+if [ -z "${TIKIN_API_KEY:-}" ] && [ -f "$CONFIG" ]; then set -a; . "$CONFIG"; set +a; fi
 [ -z "${TIKIN_API_KEY:-}" ] && echo "Set TIKIN_API_KEY first (see tikin-onboarding)."
 BASE="${TIKIN_BASE_URL:-https://console.tikin.net}"
 ```

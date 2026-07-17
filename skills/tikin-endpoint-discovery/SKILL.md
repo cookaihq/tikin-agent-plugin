@@ -11,7 +11,10 @@ tikin has 1,000+ endpoints. This skill finds the one you need, then hands off to
 
 ```bash
 # The bundled index is searchable offline — no key needed to FIND an endpoint.
-# But CALLING any endpoint you find requires a key:
+# But CALLING any endpoint you find requires a key.
+# Key resolution: env var wins; else load ~/.config/tikin/env (dotenv).
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/tikin/env"
+if [ -z "${TIKIN_API_KEY:-}" ] && [ -f "$CONFIG" ]; then set -a; . "$CONFIG"; set +a; fi
 [ -z "${TIKIN_API_KEY:-}" ] && echo "Index search works without a key; to actually call an endpoint, set TIKIN_API_KEY (see tikin-onboarding)."
 ```
 
