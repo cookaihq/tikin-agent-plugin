@@ -1,0 +1,28 @@
+# --- Secrets / credentials (NEVER commit) ---
+.gitHub-token
+.github-token
+*.token
+.env
+.env.*
+*.key
+*.pem
+secrets.*
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- Maintainer-only build/validation tooling (not shipped in the public repo) ---
+scripts/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# --- Editor / IDE ---
+.idea/
+*.swp
+.vscode/

@@ -1,0 +1,50 @@
+{
+  "name": "tikin-plugins",
+  "owner": {
+    "name": "tikin",
+    "url": "https://tikin.net"
+  },
+  "metadata": {
+    "description": "Official tikin plugin for Claude Code — social-media data, media download, and analytics across TikTok, Douyin, Instagram, YouTube, Twitter/X, Xiaohongshu, and more, via tikin's unified REST API.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "tikin-plugin",
+      "source": "./",
+      "description": "Social-media data for Claude via tikin. Download media and fetch posts, profiles, comments, search, trends, and analytics across TikTok, Douyin, Instagram, YouTube, Twitter/X, Threads, Xiaohongshu, and more — through tikin's unified REST API using your own tikin API key.",
+      "version": "0.1.0",
+      "author": {
+        "name": "tikin",
+        "url": "https://tikin.net"
+      },
+      "homepage": "https://tikin.net",
+      "license": "MIT",
+      "keywords": [
+        "tikin",
+        "tiktok",
+        "douyin",
+        "instagram",
+        "youtube",
+        "twitter",
+        "xiaohongshu",
+        "social-media",
+        "social-media-api",
+        "video-download",
+        "creator-analytics",
+        "trend-research",
+        "social-listening"
+      ],
+      "category": "web-integration",
+      "tags": [
+        "social-media",
+        "data-extraction",
+        "video-download",
+        "creator-analytics",
+        "trend-research",
+        "social-listening",
+        "competitor-analysis"
+      ]
+    }
+  ]
+}
