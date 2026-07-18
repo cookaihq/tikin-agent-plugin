@@ -5,15 +5,15 @@
     "url": "https://github.com/cookaihq"
   },
   "metadata": {
-    "description": "Official tikin plugin — social-media data, media download, and analytics across TikTok, Douyin, Instagram, YouTube, Twitter/X, Xiaohongshu, and more, via tikin's unified REST API.",
-    "version": "0.1.0"
+    "description": "Social-media data for AI agents via tikin. Download media and fetch posts, profiles, comments, search results, trends, and analytics across TikTok, Douyin, Instagram, YouTube, Twitter/X, Threads, Xiaohongshu, and more through tikin's unified REST API using your own tikin API key. Includes setup and authentication routing, REST best practices, endpoint discovery across 1,000+ API endpoints, platform-specific skills, and task skills for downloads, analytics, research, listening, comparison, comment analysis, and bulk export.",
+    "version": "0.2.0"
   },
   "plugins": [
     {
       "name": "tikin-plugin",
       "source": "./",
-      "description": "Social-media data for AI agents via tikin. Download media and fetch posts, profiles, comments, search, trends, and analytics across TikTok, Douyin, Instagram, YouTube, Twitter/X, Threads, Xiaohongshu, and more — through tikin's unified REST API using your own tikin API key.",
-      "version": "0.1.0",
+      "description": "Social-media data for AI agents via tikin. Download media and fetch posts, profiles, comments, search results, trends, and analytics across TikTok, Douyin, Instagram, YouTube, Twitter/X, Threads, Xiaohongshu, and more through tikin's unified REST API using your own tikin API key. Includes setup and authentication routing, REST best practices, endpoint discovery across 1,000+ API endpoints, platform-specific skills, and task skills for downloads, analytics, research, listening, comparison, comment analysis, and bulk export.",
+      "version": "0.2.0",
       "author": {
         "name": "cookaihq",
         "url": "https://github.com/cookaihq"

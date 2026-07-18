@@ -7,16 +7,31 @@ description: Find the right tikin endpoint among 1,000+ across 16+ platforms. Us
 
 tikin has 1,000+ endpoints. This skill finds the one you need, then hands off to `tikin-rest-api`.
 
-## Setup gate
+## Runtime gate
+
+On the first tikin use in each Agent session, follow the `tikin-setup` session update gate once
+without blocking endpoint discovery. The bundled index remains searchable offline without a key.
+
+When the user supplies a supported social-media URL, identify its platform and apply
+`${XDG_CONFIG_HOME:-$HOME/.config}/tikin/settings.json` before making a tikin call. An explicit
+user instruction wins over the stored platform override and global default. Ask once per task for
+`confirm` platforms.
+
+Never request the user-provided social-media content page with `curl`, WebFetch, or a generic
+browser fetch. Parse identifiers locally or pass the original URL/share text to the selected tikin
+endpoint. Before calling an endpoint, resolve and require the key:
 
 ```bash
-# The bundled index is searchable offline — no key needed to FIND an endpoint.
-# But CALLING any endpoint you find requires a key.
-# Key resolution: env var wins; else load ~/.config/tikin/env (dotenv).
-CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/tikin/env"
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/tikin/.env"
 if [ -z "${TIKIN_API_KEY:-}" ] && [ -f "$CONFIG" ]; then set -a; . "$CONFIG"; set +a; fi
-[ -z "${TIKIN_API_KEY:-}" ] && echo "Index search works without a key; to actually call an endpoint, set TIKIN_API_KEY (see tikin-onboarding)."
+if [ -z "${TIKIN_API_KEY:-}" ]; then
+  echo "Index search works without a key; calling an endpoint requires tikin-setup."
+  exit 1
+fi
 ```
+
+Calls to the configured tikin base URL are allowed. If the user declines tikin, explain the
+limitation and ask before selecting an alternative; do not silently fetch the original page.
 
 ## Use the bundled search CLI
 

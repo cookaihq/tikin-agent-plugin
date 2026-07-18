@@ -8,14 +8,36 @@ description: Call the tikin REST API directly with curl/HTTP. Covers base URL, B
 Direct HTTP access to all 1,000+ tikin endpoints. Use `tikin-endpoint-discovery` to find the
 right path, then call it here.
 
-## Setup gate
+## Runtime gate
+
+On the first tikin use in each Agent session, follow the `tikin-setup` session update gate once
+without blocking this task. Before the first tikin API call for the current user task:
+
+1. Determine every affected platform. Read
+   `${XDG_CONFIG_HOME:-$HOME/.config}/tikin/settings.json` as JSON, defaulting to
+   `{"routing":{"default":"auto","platforms":{}}}` when absent.
+2. Resolve each policy from `routing.platforms[platform]`, then `routing.default`. An explicit
+   instruction in the current user request wins over stored settings.
+3. For any `confirm` platform, ask once for the whole task and group the affected
+   platforms/actions. Do not ask again for pagination within the approved task.
+4. Never request a supported user-provided social-media content URL with `curl`, WebFetch, or a
+   generic browser fetch. Parse identifiers locally or pass the original URL/share text to tikin.
+   Calls to the configured tikin base URL and downloads from final media URLs returned by tikin are
+   allowed.
+5. Resolve and require the key:
 
 ```bash
-CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/tikin/env"
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/tikin/.env"
 if [ -z "${TIKIN_API_KEY:-}" ] && [ -f "$CONFIG" ]; then set -a; . "$CONFIG"; set +a; fi
-[ -z "${TIKIN_API_KEY:-}" ] && echo "Set TIKIN_API_KEY first (see tikin-onboarding)."
+if [ -z "${TIKIN_API_KEY:-}" ]; then
+  echo "Set up and validate TIKIN_API_KEY first (see tikin-setup)."
+  exit 1
+fi
 BASE="${TIKIN_BASE_URL:-https://console.tikin.net}"
 ```
+
+If the key is missing or invalid, invoke `tikin-setup`. If the user declines tikin, explain the
+limitation and ask before selecting an alternative; do not silently fetch the original page.
 
 ## Essentials
 
@@ -63,7 +85,7 @@ Paths, methods, and parameters are exactly as returned by `tikin-find-endpoint` 
 | Xiaohongshu | `cursor` (+ `index`) | |
 
 Loop until the response's `has_more` is false or no next cursor is returned. **Each page is a
-billed call — cap pages and warn the user before large pulls** (hand off to `bulk-data-export`
+billed call — cap pages and warn the user before large pulls** (hand off to `tikin-bulk-data-export`
 for big jobs).
 
 ## Rate limits, retries

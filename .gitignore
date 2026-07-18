@@ -12,9 +12,10 @@ secrets.*
 .DS_Store
 Thumbs.db
 
-# --- Maintainer-only build/validation tooling (not shipped in the public repo) ---
-# Root scripts/ only — skills bundle their own scripts/ (e.g. skills/*/scripts/), which DO ship.
-/scripts/
+# --- Maintainer-only build tooling ---
+# Root scripts/ is private except for the public structural validator. Skill-bundled scripts ship.
+/scripts/*
+!/scripts/validate-skills.sh
 
 # --- Python ---
 __pycache__/
