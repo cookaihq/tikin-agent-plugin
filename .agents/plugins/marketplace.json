@@ -1,7 +1,7 @@
 {
   "name": "tikin-plugins",
   "interface": {
-    "displayName": "tikin Plugins (moved)"
+    "displayName": "tikin Plugins (legacy 0.3.0)"
   },
   "plugins": [
     {
@@ -9,7 +9,9 @@
       "source": {
         "source": "git-subdir",
         "url": "https://github.com/cookaihq/plugin-marketplace.git",
-        "path": "tikin-plugin"
+        "path": "tikin-plugin",
+        "ref": "tikin-plugin/v0.3.0",
+        "sha": "7ca01b514d1bcf4bf26761bfacfbebeef94a83bc"
       },
       "policy": {
         "installation": "AVAILABLE",

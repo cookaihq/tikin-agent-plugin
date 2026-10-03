@@ -1,6 +1,6 @@
 {
   "name": "tikin-plugins",
-  "description": "Forwarding marketplace. tikin-plugin now lives in cookaihq/plugin-marketplace; this entry keeps existing installs updating from there.",
+  "description": "Legacy marketplace fixed at tikin-plugin 0.3.0. For new releases, install tikin-social from cookaihq/aihub-marketplace.",
   "owner": {
     "name": "cookaihq",
     "url": "https://github.com/cookaihq"
@@ -11,7 +11,9 @@
       "source": {
         "source": "git-subdir",
         "url": "https://github.com/cookaihq/plugin-marketplace.git",
-        "path": "tikin-plugin"
+        "path": "tikin-plugin",
+        "ref": "tikin-plugin/v0.3.0",
+        "sha": "7ca01b514d1bcf4bf26761bfacfbebeef94a83bc"
       },
       "description": "Social-media data for AI agents via tikin. Download media and fetch posts, profiles, comments, search results, trends, and analytics across TikTok, Douyin, Instagram, YouTube, Twitter/X, Threads, Xiaohongshu, and more through tikin's unified REST API using your own tikin API key.",
       "category": "web-integration"
